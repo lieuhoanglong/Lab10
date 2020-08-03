@@ -1,0 +1,38 @@
+<project name="Ant-Test" basedir=".">
+	<!-- Sets variables which can later be used. -->
+	<!-- The value of a property is accessed via ${} -->
+	<property name="src.dir" location="src" />
+	<property name="jar.dir" location="jar" />
+	<property name="build.dir" location="classes" />
+	
+	<!-- Create a classpath container which can be later used in the ant task -->
+	<path id="build.classpath">
+		<fileset dir="${jar.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+	
+    <target name="clean">
+        <delete dir="${build.dir}" />
+    	<delete dir="${jar.dir}" />
+    </target>
+ 
+    <target name="compile" depends="clean">
+        <mkdir dir="${build.dir}" />
+        <javac srcdir="${src.dir}" destdir="${build.dir}" />
+    </target>
+ 
+    <target name="jar" depends="compile">
+        <mkdir dir="${jar.dir}" />
+        <jar destfile="${jar.dir}/HelloAnt.jar" basedir="${build.dir}">
+            <manifest>
+                <attribute name="Main-Class"
+                  value="HelloAnt" />
+            </manifest>
+        </jar>
+    </target>
+ 
+    <target name="run" depends="jar">
+        <java jar="${jar.dir}/HelloAnt.jar" fork="true" />
+    </target>
+</project>

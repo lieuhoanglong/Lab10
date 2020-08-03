@@ -1,0 +1,6 @@
+build: main.c cal.c
+	gcc -o main main.c cal.c -I.
+debug: main.c cal.c
+	gcc -g -o mainG main.c cal.c -I.
+clean:
+	rm -f *.o *.exe

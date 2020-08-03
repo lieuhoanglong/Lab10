@@ -1,0 +1,10 @@
+CC=gcc
+CFLAGS= -I.
+LIBS = -lm
+
+build: main.o cal.o
+	$(CC) -o main main.o cal.o
+debug: main.o cal.o
+	$(CC) -g -o mainG main.o cal.o
+clean:
+	rm -f *.o *.exe
