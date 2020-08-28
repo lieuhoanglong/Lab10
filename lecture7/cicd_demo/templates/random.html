@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pull your random numbers</title>
+</head>
+<body>
+  <label>Enter the max value for your random numbers<label>
+  <input type="number" value="6" id="maxval"></input>
+  <button onclick="getRand()">Pull</button>
+  <br>
+  <label>You pulled a </label><b id="ans"></b>
+
+  <script>
+    function getRand()
+    {
+      //Get the maximum value of the potential random number
+      var num = document.getElementById("maxval").value;
+      //Calculate random number
+      var ans = Math.floor((Math.random() * num) + 1);
+      //Print random number
+      document.getElementById("ans").innerHTML = ans;
+    }
+  </script>
+</body>
+</html>
